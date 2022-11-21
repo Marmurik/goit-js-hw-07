@@ -1,5 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
+console.log(galleryItems);
+
 
 const gallery = document.querySelector('.gallery')
 const items = []
@@ -18,7 +20,7 @@ galleryItems.forEach(item => {
    galleryLink.append(imgEl);
    items.push(galleryLink);
 })
-gallery.append(...items)
+gallery.append(...items); 
 
 gallery.addEventListener('click', onImageClick)
     
@@ -36,8 +38,7 @@ function onImageClick(e) {
   gallery.addEventListener('onkeydown', onImageClick) 
 
   function onImageClick(e) {
-  
-    if (e.code === 'Close') {
+    if (e.code === 'Escape') {
       instance.close();
     }
     return gallery.removeEventListener;
@@ -45,4 +46,6 @@ function onImageClick(e) {
 }
 
 
-// console.log(galleryItems);
+
+
+
