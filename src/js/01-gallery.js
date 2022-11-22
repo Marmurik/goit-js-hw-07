@@ -50,24 +50,23 @@ function onImageClick(e) {
     e.preventDefault();
     if(e.target.nodeName !== 'IMG') {
     return;
+
 } 
-    const instance = basicLightbox.create(
-    `<img src = "${e.target.dataset.source}" width="800" height="600">`
-  );
-
-  instance.show();
-
-  gallery.addEventListener('onkeydown', onImageClick) 
-
-  function onImageClick(e) {
-    if (e.code === 'Escape') {
-      instance.close();
-    }
-    return gallery.removeEventListener;
-  };
+    const instance = basicLightbox.create (
+ `<img src = "${e.target.dataset.source}" width="800" height="600">`, {
+          onShow: (instance) => {
+            gallery.addEventListener("keydown", onEscapeButton);
+          },
+          onClose: (instance) => {
+            gallery.removeEventListener("keydown", onEscapeButton);
+          },
+        });
+      instance.show();
+      
+      
+      function onEscapeButton(evt) {
+        if (evt.key === "Escape") {
+          instance.close();
+        }
+      }
 }
-
-
-
-
-
